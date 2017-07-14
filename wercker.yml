@@ -11,3 +11,12 @@ build:
           pwd
           ls -l
           mvn clean package
+deploy-glassfish:
+# Glassfish5 with Oracke JDK
+build:
+  box: shinya/docker-glassfish5
+  steps:
+    - script:
+        code: |
+          ls -l $WERCKER_OUTPUT_DIR/maven/servlet4-serverpush/target/
+          asadmin deploy $WERCKER_OUTPUT_DIR/maven/servlet4-serverpush/target/serverpush.war
