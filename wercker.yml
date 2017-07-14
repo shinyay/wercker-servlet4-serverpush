@@ -18,6 +18,7 @@ deploy-glassfish:
   steps:
     - script:
         code: |
+          env
           pwd
           ls -l
           ls -l $WERCKER_OUTPUT_DIR
