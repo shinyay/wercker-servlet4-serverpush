@@ -7,4 +7,7 @@ build:
         code: |
           pwd
           ls -l
+          cd maven/servlet4-serverpush/
+          pwd
+          ls -l
           mvn clean package
