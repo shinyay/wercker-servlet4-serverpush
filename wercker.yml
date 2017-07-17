@@ -21,6 +21,6 @@ deploy-glassfish:
           env
           pwd
           ls -l
-          ls -l $WERCKER_OUTPUT_DIR
-          ls -l $WERCKER_OUTPUT_DIR/maven/servlet4-serverpush/target/
-          asadmin deploy $WERCKER_OUTPUT_DIR/maven/servlet4-serverpush/target/serverpush.war
+          ls -l $WERCKER_SOURCE_DIR
+          ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/
+          asadmin deploy $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/serverpush.war
