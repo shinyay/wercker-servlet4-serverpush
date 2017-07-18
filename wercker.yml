@@ -28,7 +28,7 @@ deploy-glassfish:
           ls -l $WERCKER_SOURCE_DIR
           echo "[ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/]"
           ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/
-          echo "[sleep 30]"
-          sleep 30
+          cp $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/serverpush.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy
           asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false list-domains
-          asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false deploy $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/serverpush.war
+          asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false start-domain
+          asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false list-domains
