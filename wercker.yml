@@ -11,7 +11,6 @@ build:
           pwd
           ls -l
           mvn clean package
-deploy-glassfish:
 # Glassfish5 with Oracke JDK
 deploy-glassfish:
   box: shinya/docker-glassfish5
@@ -22,13 +21,19 @@ deploy-glassfish:
           env
           echo "[PRINT WORKING DIRECTORY]"
           pwd
-          echo "[ls -l]"
           ls -l
-          echo "[ls -l $WERCKER_SOURCE_DIR]"
+          echo '[ls -l $WERCKER_SOURCE_DIR]'
           ls -l $WERCKER_SOURCE_DIR
-          echo "[ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/]"
+          echo '[ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/]'
           ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/
           cp $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/serverpush.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy
           asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false list-domains
           asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false start-domain
           asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false list-domains
+## Push to Docker Hub
+    - internal/docker-push:
+         username: $USERNAME
+         password: $PASSWORD
+         repository: shinya/docker-glassfish5-serverpush
+         tag: latest
+         author: shinyay
