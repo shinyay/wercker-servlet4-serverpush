@@ -9,5 +9,5 @@ while [ $count -lt 100 ]; do
   fi
   echo "GlassFis is starting..."
   count=`expr $count + 1`
-  sleep 1
+  sleep 10
 done
