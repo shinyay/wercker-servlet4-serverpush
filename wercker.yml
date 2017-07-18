@@ -23,4 +23,6 @@ deploy-glassfish:
           ls -l
           ls -l $WERCKER_SOURCE_DIR
           ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/
+          count=0
+          while [ $count -lt 100 ]; do tmp_str=`lsof -i:4848`; if [ "$tmp_str" != "" ]; then echo "Glassfish started"; break; fi; count=`expr $count + 1`; echo "Waiting..."; sleep 1; done
           asadmin deploy $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/serverpush.war
