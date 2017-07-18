@@ -37,3 +37,5 @@ deploy-glassfish:
          repository: shinya/docker-glassfish5-serverpush
          tag: latest
          author: shinyay
+         ports: 4848/tcp, 8080/tcp, 8181/tcp
+         cmd: asadmin --user admin --passwordfile /tmp/gfpassword --interactive=false start-domain 
