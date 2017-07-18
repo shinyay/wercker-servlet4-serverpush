@@ -24,10 +24,10 @@ deploy-glassfish:
           pwd
           echo "[ls -l]"
           ls -l
-          echo "GlassFish starting"
-          sh checkGlassfishStarted.sh 
           echo "[ls -l $WERCKER_SOURCE_DIR]"
           ls -l $WERCKER_SOURCE_DIR
           echo "[ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/]"
           ls -l $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/
-          asadmin deploy $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/serverpush.war
+          echo "[sleep 60]"
+          sleep 60
+          asadmin asadmin --user=admin --passwordfile=/tmp/gfpassword deploy $WERCKER_SOURCE_DIR/maven/servlet4-serverpush/target/serverpush.war
