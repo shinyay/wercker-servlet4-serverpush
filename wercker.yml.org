@@ -2,8 +2,15 @@
 build:
   box: shinya/docker-mvn
   steps:
-    - shinyay/maven:
-        goals: package
+    - script:
+        name: maven package
+        code: |
+          pwd
+          ls -l
+          cd maven/servlet4-serverpush/
+          pwd
+          ls -l
+          mvn clean package
 # Glassfish5 with Oracke JDK
 deploy-glassfish:
   box: shinya/docker-glassfish5
