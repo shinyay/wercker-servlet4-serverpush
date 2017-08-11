@@ -4,6 +4,7 @@ build:
   steps:
     - shinyay/maven:
         goals: package
+        project_dir: maven/servlet4-serverpush
 # Glassfish5 with Oracke JDK
 deploy-glassfish:
   box: shinya/docker-glassfish5
